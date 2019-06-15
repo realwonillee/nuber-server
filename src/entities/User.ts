@@ -1,6 +1,19 @@
 import bcrypt from "bcrypt";
 import { IsEmail } from "class-validator";
-import { BaseEntity, BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  BaseEntity,
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from "typeorm";
+import Chat from "./Chat";
+import Message from "./Message";
 
 // 암호화 횟수
 const BCRYPT_ROUNDS = 10;
@@ -55,6 +68,12 @@ class User extends BaseEntity {
 
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
+
+  @ManyToOne(type => Chat, chat => chat.participants)
+  chat: Chat;
+
+  @OneToMany(type => Message, message => message.user)
+  messages: Message[];
 
   @CreateDateColumn()
   createdAt: string;
