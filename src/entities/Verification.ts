@@ -1,12 +1,16 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { verificationTarget } from "src/types/types";
+import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+
+const PHONE: string = "PHONE";
+const EMAIL: string = "EMAIL";
 
 @Entity()
 class Verification extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "text" })
-  target: string;
+  @Column({ type: "text", enum: [PHONE, EMAIL] })
+  target: verificationTarget;
 
   @Column({ type: "text" })
   payload: string;
@@ -22,6 +26,17 @@ class Verification extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: string;
+
+  @BeforeInsert()
+  createKey(): void {
+    if (this.target === PHONE) {
+      this.key = Math.floor(Math.random() * 100000).toString();
+    } else {
+      this.key = Math.random()
+        .toString(36)
+        .substr(2);
+    }
+  }
 }
 
 export default Verification;
