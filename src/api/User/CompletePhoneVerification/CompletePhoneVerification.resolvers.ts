@@ -1,8 +1,8 @@
 import { CompletePhoneVerificationMutationArgs, CompletePhoneVerificationResponse } from "src/types/graph";
 import { Resolvers } from "src/types/resolvers";
-import createJWT from "../../../utils/createJWT";
 import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
+import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {
