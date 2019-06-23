@@ -1,5 +1,5 @@
-import { verificationTarget } from "src/types/types";
 import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { verificationTarget } from "../types/types";
 
 const PHONE: string = "PHONE";
 const EMAIL: string = "EMAIL";
