@@ -7,11 +7,13 @@ import privateResolver from "../../../utils/privateResolver";
 const resolvers: Resolvers = {
   Mutation: {
     ReportMovement: privateResolver(
-      async (_, args: ReportMovementMutationArgs, { req }): Promise<ReportMovementResponse> => {
+      async (_, args: ReportMovementMutationArgs, { req, pubSub }): Promise<ReportMovementResponse> => {
         const user: User = req.user;
         const notNull = cleanNullArg(args);
         try {
           await User.update({ id: user.id }, { ...notNull });
+          const updatedUser = await User.findOne({ id: user.id });
+          pubSub.publish("driverUpdate", { DriversSubscription: updatedUser });
           return {
             ok: true,
             error: null
