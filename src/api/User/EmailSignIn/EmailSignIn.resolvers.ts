@@ -1,6 +1,6 @@
-import { EmailSignInMutationArgs, EmailSignInResponse } from "src/types/graph";
-import { Resolvers } from "src/types/resolvers";
 import User from "../../../entities/User";
+import { EmailSignInMutationArgs, EmailSignInResponse } from "../../../types/graph";
+import { Resolvers } from "../../../types/resolvers";
 import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {

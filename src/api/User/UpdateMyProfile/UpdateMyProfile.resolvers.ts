@@ -1,6 +1,6 @@
-import { Resolvers } from "src/types/resolvers";
 import User from "../../../entities/User";
 import { UpdateMyProfileMutationArgs } from "../../../types/graph";
+import { Resolvers } from "../../../types/resolvers";
 import cleanNullArg from "../../../utils/cleanNullArg";
 import privateResolver from "../../../utils/privateResolver";
 

@@ -1,7 +1,7 @@
-import { FacebookConnectMutationArgs, FacebookConnectResponse } from "src/types/graph";
-import { Resolvers } from "src/types/resolvers";
-import createJWT from "../../../utils/createJWT";
 import User from "../../../entities/User";
+import { FacebookConnectMutationArgs, FacebookConnectResponse } from "../../../types/graph";
+import { Resolvers } from "../../../types/resolvers";
+import createJWT from "../../../utils/createJWT";
 
 const resolvers: Resolvers = {
   Mutation: {

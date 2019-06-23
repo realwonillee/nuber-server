@@ -1,6 +1,6 @@
-import { RequestEmailVerificationResponse } from "src/types/graph";
 import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
+import { RequestEmailVerificationResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
 import { sendVerificationEmail } from "../../../utils/sendEmail";

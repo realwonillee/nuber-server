@@ -1,7 +1,7 @@
-import { EmailSignUpMutationArgs, EmailSignUpResponse } from "src/types/graph";
-import { Resolvers } from "src/types/resolvers";
 import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
+import { EmailSignUpMutationArgs, EmailSignUpResponse } from "../../../types/graph";
+import { Resolvers } from "../../../types/resolvers";
 import createJWT from "../../../utils/createJWT";
 import { sendVerificationEmail } from "../../../utils/sendEmail";
 
